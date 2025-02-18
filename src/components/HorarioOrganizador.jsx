@@ -49,14 +49,48 @@ const HorarioOrganizador = () => {
 
   const handlePrint = () => {
     const table = document.getElementById("scheduleTable");
+  
     html2canvas(table).then((canvas) => {
-      const link = document.createElement("a");
-      link.href = canvas.toDataURL("image/png");
-      link.download = "schedule.png";
-      link.click();
+      const finalCanvas = document.createElement("canvas");
+      const ctx = finalCanvas.getContext("2d");
+  
+      // Dimensiones para incluir el título y logo
+      const logo = new Image();
+      logo.src = "./logo1.png";
+      logo.onload = () => {
+        const padding = 20;
+        const titleHeight = 50;
+        const logoSize = 80;
+        const totalHeight = canvas.height + titleHeight + logoSize + padding;
+  
+        finalCanvas.width = canvas.width;
+        finalCanvas.height = totalHeight;
+  
+        // Fondo blanco
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
+  
+        // Dibujar logo
+        ctx.drawImage(logo, (finalCanvas.width - logoSize) / 2, padding, logoSize, logoSize);
+  
+        // Dibujar título
+        ctx.fillStyle = "#000";
+        ctx.font = "bold 20px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("Administración de empresas", finalCanvas.width / 2, padding + logoSize + 25);
+  
+        // Dibujar la tabla capturada debajo del título
+        ctx.drawImage(canvas, 0, titleHeight + logoSize + padding);
+  
+        // Convertir a imagen y descargar
+        const link = document.createElement("a");
+        link.href = finalCanvas.toDataURL("image/png");
+        link.download = "schedule.png";
+        link.click();
+      };
     });
   };
-
+  
   const generarColorAleatorio = () => {
     const letras = "0123456789ABCDEF";
     let color = "#";
