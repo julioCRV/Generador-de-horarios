@@ -1,6 +1,5 @@
 .contenedor {
     width: 100%;
-    // max-width: 900px;
     margin: auto;
     text-align: center;
   }
@@ -48,5 +47,41 @@
     padding: 5px;
     border-radius: 5px;
     font-weight: bold;
+  }
+  
+  .table-container {
+    width: 100%;
+    overflow-x: auto; /* Agrega scroll horizontal si es necesario */
+  }
+  
+  #scheduleTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Evita que la tabla se haga demasiado pequeña */
+  }
+  
+  #scheduleTable th, #scheduleTable td {
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    #scheduleTable th, #scheduleTable td {
+      font-size: 12px; /* Reducir el tamaño de fuente */
+      padding: 4px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #scheduleTable {
+      min-width: 100%; /* Hace que la tabla ocupe toda la pantalla */
+    }
+  
+    #scheduleTable th, #scheduleTable td {
+      font-size: 10px; /* Hacer el texto más pequeño en celulares */
+      padding: 3px;
+    }
   }
   

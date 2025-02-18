@@ -106,62 +106,67 @@ const HorarioOrganizador = () => {
 
       <button onClick={handlePrint}>Imprimir</button>
 
-      <table id="scheduleTable" border="1">
-        <thead>
-          <tr>
-            <th>Horario</th>
-            {diasSemana.map(dia => <th key={dia}>{dia}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {horarios.map((hora, idx) => (
-            <tr key={idx}>
-              <td>{hora}</td>
-              {diasSemana.map(dia => (
-                <td key={dia}>
-                  {horariosFiltrados.map((h, index) =>
-                    h.dias.includes(dia) && h.horarios[h.dias.indexOf(dia)] === hora ? (
-                      <div
-                        key={index}
-                        style={{
-                          backgroundColor: coloresMaterias[h.materia] || "#ccc",
-                          color: "#fff",
-                          padding: "5px",
-                          borderRadius: "5px",
-                          textAlign: "center",
-                          fontSize: "12px",
-                          lineHeight: "1.2",
-                        }}
-                      >
-                        {h.materia} - {h.docente} ({h.grupo})
-                        <button
-                          onClick={() => quitarDocente(`${h.docente} - Grupo ${h.grupo}`)}
-                          style={{
-                            marginLeft: "5px",
-                            backgroundColor: "#fff",
-                            color: "#000",
-                            border: "1px solid #ccc",
-                            cursor: "pointer",
-                            borderRadius: "50%",
-                            width: "25px",
-                            height: "25px",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            padding: "0",
-                          }}
-                        >
-                          <FaTimes size={12} color="black" />
-                        </button>
-                      </div>
-                    ) : null
-                  )}
-                </td>
+      <div className="table-container">
+
+          <table id="scheduleTable" border="1">
+            <thead>
+              <tr>
+                <th>Horario</th>
+                {diasSemana.map(dia => <th key={dia}>{dia}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {horarios.map((hora, idx) => (
+                <tr key={idx}>
+                  <td>{hora}</td>
+                  {diasSemana.map(dia => (
+                    <td key={dia}>
+                      {horariosFiltrados.map((h, index) =>
+                        h.dias.includes(dia) && h.horarios[h.dias.indexOf(dia)] === hora ? (
+                          <div
+                            key={index}
+                            style={{
+                              backgroundColor: coloresMaterias[h.materia] || "#ccc",
+                              color: "#fff",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              textAlign: "center",
+                              fontSize: "12px",
+                              lineHeight: "1.2",
+                            }}
+                          >
+                            {h.materia} - {h.docente} ({h.grupo})
+                            <button
+                              onClick={() => quitarDocente(`${h.docente} - Grupo ${h.grupo}`)}
+                              style={{
+                                marginLeft: "5px",
+                                backgroundColor: "#fff",
+                                color: "#000",
+                                border: "1px solid #ccc",
+                                cursor: "pointer",
+                                borderRadius: "50%",
+                                width: "25px",
+                                height: "25px",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                padding: "0",
+                              }}
+                            >
+                              <FaTimes size={12} color="black" />
+                            </button>
+                          </div>
+                        ) : null
+                      )}
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+       
+      </div>
+
     </div>
   );
 };
