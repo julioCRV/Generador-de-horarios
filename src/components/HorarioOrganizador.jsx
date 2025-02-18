@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import html2canvas from "html2canvas";
 import data from "../data/data.json";
+import './HorarioOrganizador.css';
+import { FaTimes } from "react-icons/fa";
 
 const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 const horarios = [
@@ -55,8 +57,28 @@ const HorarioOrganizador = () => {
     });
   };
 
+  const generarColorAleatorio = () => {
+    const letras = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letras[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
+  const [coloresMaterias, setColoresMaterias] = useState({});
+
+  useEffect(() => {
+    if (docente && materia && !coloresMaterias[materia]) {
+      setColoresMaterias((prevColores) => ({
+        ...prevColores,
+        [materia]: generarColorAleatorio(),
+      }));
+    }
+  }, [docente]);
+
   return (
-    <div>
+    <div className="contenedor">
       <div>
         <select onChange={(e) => setNivel(e.target.value)} value={nivel}>
           <option value="">Seleccione Nivel</option>
@@ -81,9 +103,9 @@ const HorarioOrganizador = () => {
           ))}
         </select>
       </div>
-      
+
       <button onClick={handlePrint}>Imprimir</button>
-      
+
       <table id="scheduleTable" border="1">
         <thead>
           <tr>
@@ -97,14 +119,43 @@ const HorarioOrganizador = () => {
               <td>{hora}</td>
               {diasSemana.map(dia => (
                 <td key={dia}>
-                  {horariosFiltrados.map((h, index) => (
+                  {horariosFiltrados.map((h, index) =>
                     h.dias.includes(dia) && h.horarios[h.dias.indexOf(dia)] === hora ? (
-                      <div key={index}>
+                      <div
+                        key={index}
+                        style={{
+                          backgroundColor: coloresMaterias[h.materia] || "#ccc",
+                          color: "#fff",
+                          padding: "5px",
+                          borderRadius: "5px",
+                          textAlign: "center",
+                          fontSize: "12px",
+                          lineHeight: "1.2",
+                        }}
+                      >
                         {h.materia} - {h.docente} ({h.grupo})
-                        <button onClick={() => quitarDocente(`${h.docente} - Grupo ${h.grupo}`)}>X</button>
+                        <button
+                          onClick={() => quitarDocente(`${h.docente} - Grupo ${h.grupo}`)}
+                          style={{
+                            marginLeft: "5px",
+                            backgroundColor: "#fff",
+                            color: "#000",
+                            border: "1px solid #ccc",
+                            cursor: "pointer",
+                            borderRadius: "50%",
+                            width: "25px",
+                            height: "25px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "0",
+                          }}
+                        >
+                          <FaTimes size={12} color="black" />
+                        </button>
                       </div>
                     ) : null
-                  ))}
+                  )}
                 </td>
               ))}
             </tr>
