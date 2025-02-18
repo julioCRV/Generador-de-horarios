@@ -79,7 +79,7 @@ const HorarioOrganizador = () => {
 
   return (
     <div className="contenedor">
-      <div>
+      <div className="select-option">
         <select onChange={(e) => setNivel(e.target.value)} value={nivel}>
           <option value="">Seleccione Nivel</option>
           {Object.keys(data).map((nivel) => (
