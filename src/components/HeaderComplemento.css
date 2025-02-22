@@ -1,0 +1,64 @@
+.header-container {
+    text-align: center;
+    padding: 20px;
+    // background-color: #f5f5f5;
+  }
+  
+  .title {
+    font-size: 18px;
+    margin-bottom: -20px;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    height: 180px;
+    margin: 0 auto;
+    // overflow: hidden;
+    border-radius: 10px;
+    // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .carousel-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }
+  
+  .slide {
+    position: absolute;
+    width: 60%;
+    height: 80%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .slide.left {
+    left: 50%;
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  
+  .slide.active {
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  .slide.right {
+    right: 50%;
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  
+  .slide:hover {
+    opacity: 0.8;
+  }
+  

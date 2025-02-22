@@ -1,5 +1,5 @@
 .footer {
-    background-color: #333;
+    background-color: #040605;
     color: white;
     text-align: center;
     padding: 20px;
@@ -17,7 +17,7 @@
 
 /* Botón "Conócenos" con ícono dinámico */
 .btn-conocenos {
-    background-color: #2b849b;
+    background-color: #5CB44C;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -31,7 +31,7 @@
 }
 
 .btn-conocenos:hover {
-    background-color: #44b6d3;;
+    background-color: #39ae27;
 }
 
 /* Contenedor de información */

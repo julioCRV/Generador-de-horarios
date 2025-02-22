@@ -1,5 +1,5 @@
 .header {
-    background-color: #3c6a81;
+    background-color: #040605;
     color: white;
     padding: 15px 20px;
     display: flex;
@@ -11,6 +11,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
+    color: #F2F2F2;
 }
 
 .nav-links {
@@ -31,6 +32,23 @@
     text-decoration: underline;
 }
 
-.imagen {
+.imagen1 {
     width: 60px;
+    margin-left: 10%;
+}
+
+.imagen2 {
+    width: 60px;
+    margin-right: 10%;
+}
+
+/* Para pantallas más pequeñas */
+@media (max-width: 808px) {
+    .imagen1 {
+        margin-left: 0px;
+    }
+    
+    .imagen2 {
+        margin-right: 0px;
+    }
 }

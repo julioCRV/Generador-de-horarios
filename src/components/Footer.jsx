@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Footer.css";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Importar iconos
 
 const Footer = () => {
     const [showInfo, setShowInfo] = useState(false);
+    const infoRef = useRef(null);
 
     const toggleInfo = () => {
         setShowInfo(!showInfo);
     };
+
+    useEffect(() => {
+        if (showInfo && infoRef.current) {
+            infoRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }, [showInfo]);
 
     return (
         <footer className="footer">
@@ -19,9 +26,9 @@ const Footer = () => {
 
                 {/* Información de Alfa (se muestra al presionar el botón) */}
                 {showInfo && (
-                    <div className="info-box">
+                    <div ref={infoRef} className="info-box">
                         <h2>Equipo de trabajo Alfa</h2>
-                        <br/>
+                        <br />
                         <p>
                             Formar de manera integral a profesionales en Administración de Empresas dentro del Equipo de Trabajo Alfa, con una conciencia crítica, ética, responsable y actitud emprendedora...
                         </p>

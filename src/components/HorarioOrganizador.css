@@ -13,7 +13,7 @@ select {
 }
 
 button {
-    background-color: #2b849b;
+    background-color: #5CB44C;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -23,7 +23,7 @@ button {
 }
 
 button:hover {
-    background-color: #3fabc6;
+    background-color: #39ae27;
 }
 
 table {
@@ -40,7 +40,7 @@ td {
 }
 
 th {
-    background-color: #333;
+    background-color: #64BF56;
     color: white;
 }
 
