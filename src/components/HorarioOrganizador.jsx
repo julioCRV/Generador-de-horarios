@@ -82,7 +82,7 @@ const HorarioOrganizador = () => {
         ctx.globalAlpha = 0.2;
 
         // Definir tamaño y posición del logo centrado
-        const logoSize = Math.min(finalCanvas.width, finalCanvas.height) * 0.5; // 50% del tamaño menor
+        const logoSize = Math.min(finalCanvas.width, finalCanvas.height) * 1; // 50% del tamaño menor
         const centerX = (finalCanvas.width - logoSize) / 2;
         const centerY = (finalCanvas.height - logoSize) / 2;
 
@@ -124,6 +124,8 @@ const HorarioOrganizador = () => {
 
   return (
     <div className="contenedor">
+      <h2>Organizador de horario</h2>
+      <br />
       <div className="select-option">
         <select onChange={(e) => setNivel(e.target.value)} value={nivel}>
           <option value="">Seleccione Nivel</option>
@@ -170,16 +172,8 @@ const HorarioOrganizador = () => {
                       h.dias.includes(dia) && h.horarios[h.dias.indexOf(dia)] === hora ? (
                         <div
                           key={index}
-                          style={{
-                            backgroundColor: coloresMaterias[h.materia] || "#ccc",
-                            color: "#fff",
-                            padding: "5px",
-                            borderRadius: "5px",
-                            textAlign: "center",
-                            fontSize: "12px",
-                            lineHeight: "1.2",
-                            fontFamily: "monospace"
-                          }}
+                          className="horario-item"
+                          style={{ backgroundColor: coloresMaterias[h.materia] || "#ccc" }}
                         >
                           {h.materia} - {h.docente} ({h.grupo})
                           <button

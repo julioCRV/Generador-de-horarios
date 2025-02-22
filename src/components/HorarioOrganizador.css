@@ -2,6 +2,7 @@
     width: 100%;
     margin: auto;
     text-align: center;
+    margin-top: -20px;
 }
 
 select {
@@ -52,7 +53,7 @@ td div {
 
 .table-container {
     width: 100%;
-    overflow-x: auto;   
+    overflow-x: auto;
 }
 
 #scheduleTable {
@@ -88,8 +89,21 @@ td div {
     cursor: pointer;
 }
 
+.horario-item {
+    background-color: #ccc;
+    /* Color por defecto */
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.2;
+    font-family: monospace;
+}
+
+
 @media (max-width: 468px) {
-    .select-option select{
+    .select-option select {
         flex: 1;
         min-width: 200px;
         max-width: 100%;
@@ -98,7 +112,6 @@ td div {
 
 /* Para pantallas más pequeñas */
 @media (max-width: 768px) {
-
     #scheduleTable th,
     #scheduleTable td {
         font-size: 12px;
@@ -108,6 +121,9 @@ td div {
 }
 
 @media (max-width: 480px) {
+    .horario-item {
+        font-size: 8px;
+    }
     #scheduleTable {
         min-width: 100%;
         /* Hace que la tabla ocupe toda la pantalla */

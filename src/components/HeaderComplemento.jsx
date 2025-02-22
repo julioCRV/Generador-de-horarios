@@ -4,14 +4,8 @@ import "./HeaderComplemento.css"; // Archivo CSS separado
 export default function HeaderComplemento() {
   const imagenes = ["../A.jpg", "../B.jpg", "../C.jpeg", "../D.jpeg"];
   const [index, setIndex] = useState(0);
-
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       nextSlide();
-  //     }, 4000); // Cambio automático cada 4 segundos
-
-  //     return () => clearInterval(interval);
-  //   }, [index]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const nextSlide = () => {
     setIndex((prevIndex) => (prevIndex + 1) % imagenes.length);
@@ -21,15 +15,21 @@ export default function HeaderComplemento() {
     setIndex((prevIndex) => (prevIndex - 1 + imagenes.length) % imagenes.length);
   };
 
-  const goToSlide = (newIndex) => {
-    setIndex(newIndex);
+  const openModal = (img) => {
+    setSelectedImage(img);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImage(null);
   };
 
   return (
     <div className="header-container">
       <h1 className="title">Quiénes Somos</h1>
       <br />
-      <div className="carousel">
+      <div className={`carousel ${modalOpen ? "hidden" : ""}`}>
         <div className="carousel-inner">
           {/* Imagen izquierda */}
           <div
@@ -42,6 +42,7 @@ export default function HeaderComplemento() {
           <div
             className="slide active"
             style={{ backgroundImage: `url(${imagenes[index]})` }}
+            onClick={() => openModal(imagenes[index])}
           />
 
           {/* Imagen derecha */}
@@ -51,6 +52,15 @@ export default function HeaderComplemento() {
             onClick={() => nextSlide()}
           />
         </div>
+
+        {/* Modal para la imagen en grande */}
+        {modalOpen && (
+          <div className="modal-overlay" onClick={closeModal}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <img src={selectedImage} alt="Imagen ampliada" className="modal-image" />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
