@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./Footer.css";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Importar iconos
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { BiLogoWhatsapp } from "react-icons/bi";
 
 const Footer = () => {
     const [showInfo, setShowInfo] = useState(false);
@@ -45,12 +46,21 @@ const Footer = () => {
 
                 {/* Enlaces de WhatsApp en una sola fila */}
                 <div className="whatsapp-links">
-                    <a href="https://chat.whatsapp.com/LTFjVcXMGW18aW3twYOIA7" target="_blank" rel="noopener noreferrer">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+                    <a
+                        href="https://chat.whatsapp.com/LTFjVcXMGW18aW3twYOIA7"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <BiLogoWhatsapp size={24} color="green" />
                         <span>Material de apoyo Alfa</span>
                     </a>
-                    <a href="https://chat.whatsapp.com/EDoKlZUnlM9EdTvGfWDIC5" target="_blank" rel="noopener noreferrer">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+
+                    <a
+                        href="https://chat.whatsapp.com/EDoKlZUnlM9EdTvGfWDIC5"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <BiLogoWhatsapp size={24} color="green" />
                         <span>Trueque de material académico ADMI</span>
                     </a>
                 </div>
